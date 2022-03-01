@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class MyApp {
 
   public static void main(String[] args) {
-    ApplicationContext ctx = new ClassPathXmlApplicationContext("application-context.xml");
+    ApplicationContext ctx = new AnnotationConfigApplicationContext("com.joseph.training");
     var service = ctx.getBean(MyService.class);
     service.doSomething();
   }
