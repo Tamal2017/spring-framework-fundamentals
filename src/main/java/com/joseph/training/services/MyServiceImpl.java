@@ -1,18 +1,23 @@
 package com.joseph.training.services;
 
 import com.joseph.training.repositories.MyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.EnvironmentAware;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MyServiceImpl implements MyService {
+public class MyServiceImpl implements MyService, EnvironmentAware {
 
-  @Value("${name.value: default}")
+  @Value("${name.value: empty}")
   private String name;
+  @Autowired
   private MyRepository repository;
+  private Environment environment;
 
-  public MyServiceImpl(@Qualifier("myRepositoryImpl") MyRepository repository) {
+  public MyServiceImpl( MyRepository repository) {
     this.repository = repository;
   }
 
@@ -22,4 +27,8 @@ public class MyServiceImpl implements MyService {
     repository.doQuery();
   }
 
+  @Override
+  public void setEnvironment(Environment environment) {
+    this.environment = environment;
+  }
 }
