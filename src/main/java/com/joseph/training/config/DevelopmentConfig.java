@@ -2,11 +2,13 @@ package com.joseph.training.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 
+@Profile("local")
 @Configuration
-@PropertySource("classpath:application-local.properties")
 @ComponentScan("com.joseph.training")
-public class ConfigApp {
+@PropertySource("classpath:application-local.properties")
+public class DevelopmentConfig {
 
 }

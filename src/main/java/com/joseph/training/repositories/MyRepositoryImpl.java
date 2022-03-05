@@ -5,8 +5,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MyRepositoryImpl implements MyRepository {
 
-  public void doQuery() {
-    System.out.println("Doing query in DB");
+  public void doQuery(String url) {
+    System.out.println("Retrieving data server url : " + url);
   }
 
 }
